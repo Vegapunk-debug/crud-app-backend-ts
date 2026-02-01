@@ -5,4 +5,5 @@ const router = Router();
 
 const todoService = new ToDoService()
 
+router.post("/task", todoService.createTask)
 router.get("/task", todoService.getTask)

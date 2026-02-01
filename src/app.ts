@@ -8,6 +8,7 @@ dotenv.config();
 interface AppInterface{
     startServer(): void;
     connectDatabase(): void;
+    intializeRoutes(): void;
 }
 
 export class App implements AppInterface {
@@ -21,6 +22,7 @@ export class App implements AppInterface {
 
         this.startServer();
         this.connectDatabase();
+        this.intializeRoutes();
     }
 
     startServer(): void{
@@ -43,5 +45,9 @@ export class App implements AppInterface {
             console.log("Error Connecting MongoDB", error);
             
         }
+    }
+
+    intializeRoutes(): void {
+        console.log("Routes");
     }
 }

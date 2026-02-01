@@ -18,7 +18,17 @@ export class ToDoService {
             return task            
         } catch (error) {
             console.log("Failed to get task", error);
+            throw error
         }
     }
-    
+
+    async deleteTask(title: string){
+        try {
+            const deletedTask = await ToDoModel.findOneAndDelete({ title: title });
+            return deletedTask            
+        } catch (error) {
+            console.log("Failed to delete task", error);
+            throw error
+        }
+    } 
 }

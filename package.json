@@ -4,7 +4,8 @@
   "description": "Node.js backend implementing Object-Oriented Programming (OOP) principles. Demonstrates a clean Layered Architecture (Controller-Service-Repository) with advanced CRUD operations, search, filtering, sorting, and pagination using TypeScript.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "ts-node-dev --respawn --transpile-only src/server.ts"
   },
   "repository": {
     "type": "git",
@@ -18,6 +19,7 @@
   },
   "homepage": "https://github.com/Vegapunk-debug/CRUD-App-backend-ts#readme",
   "dependencies": {
+    "dotenv": "^17.2.3",
     "express": "^5.2.1",
     "mongoose": "^9.1.5"
   },

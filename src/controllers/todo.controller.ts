@@ -1,11 +1,19 @@
-import { Router } from "express";
 import { ToDoService } from "../services/todo.service";
+import { Request, Response } from "express";
 
-const router = Router();
+export class TodoController{
+    constructor(public todoService: ToDoService){
+    }
 
-const todoService = new ToDoService()
+    createTask = async (req: Request, res: Response) => {
+        try {
+            const { title, status } = req.body
+            const newTask = await this.todoService.createTask(title, status)
+            res.status(201).json(newTask)
+        } catch (error) {
+            res.status(500).json({ message: "Error creating task", error })
+        }
+    }
+}
 
-router.post("/task", todoService.createTask)
-router.get("/task", todoService.getTask)
-router.put("/task", todoService.updateTask)
-router.delete("/task", todoService.deleteTask)
+

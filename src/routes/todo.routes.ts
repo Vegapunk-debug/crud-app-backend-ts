@@ -10,7 +10,7 @@ const todoController = new TodoController(todoService);
 
 router.post("/task", todoController.createTask)
 router.get("/task", todoController.getTask)
-// router.put("/task", todoController.updateTask)
+router.put("/task", todoController.updateTask)
 // router.delete("/task", todoController.deleteTask)
 
 export default router;

@@ -23,6 +23,16 @@ export class TodoController{
             res.status(500).json({ message: "Error getting tasks", error })
         }
     }
+
+    updateTask = async (req: Request, res: Response) => {
+        try {
+            const { prevTitle, newTitle, newStatus } = req.body
+            const updated = await this.todoService.updateTask(prevTitle, newTitle, newStatus)
+            res.status(200).json(updated)
+        } catch (error) {
+            res.status(500).json({ message: "Error updating tasks", error })
+        }
+    }
 }
 
 

@@ -14,6 +14,15 @@ export class TodoController{
             res.status(500).json({ message: "Error creating task", error })
         }
     }
+
+    getTask = async (req: Request, res: Response) => {
+        try {
+            const tasks = await this.todoService.getTask()
+            res.status(200).json(tasks)
+        } catch (error) {
+            res.status(500).json({ message: "Error getting tasks", error })
+        }
+    }
 }
 
 

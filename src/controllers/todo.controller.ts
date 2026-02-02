@@ -33,6 +33,16 @@ export class TodoController{
             res.status(500).json({ message: "Error updating tasks", error })
         }
     }
+
+    deleteTask = async (req: Request, res: Response) => {
+        try {
+            const { title } = req.body
+            const deleted = await this.todoService.deleteTask(title)
+            res.status(200).json({ message: "Task deleted successfully" })
+        } catch (error) {
+            res.status(500).json({ message: "Error deleting tasks", error })
+        }
+    }
 }
 
 

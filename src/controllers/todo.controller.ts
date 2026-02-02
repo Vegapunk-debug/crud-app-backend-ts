@@ -5,7 +5,7 @@ export class TodoController{
     constructor(public todoService: ToDoService){
     }
 
-    createTask = async (req: Request, res: Response) => {
+    async createTask(req: Request, res: Response){
         try {
             const { title, status } = req.body
             const newTask = await this.todoService.createTask(title, status)
@@ -15,7 +15,7 @@ export class TodoController{
         }
     }
 
-    getTask = async (req: Request, res: Response) => {
+    async getTask(req: Request, res: Response){
         try {
             const tasks = await this.todoService.getTask()
             res.status(200).json(tasks)
@@ -24,7 +24,7 @@ export class TodoController{
         }
     }
 
-    updateTask = async (req: Request, res: Response) => {
+    async updateTask(req: Request, res: Response){
         try {
             const { prevTitle, newTitle, newStatus } = req.body
             const updated = await this.todoService.updateTask(prevTitle, newTitle, newStatus)
@@ -34,7 +34,7 @@ export class TodoController{
         }
     }
 
-    deleteTask = async (req: Request, res: Response) => {
+    async deleteTask(req: Request, res: Response){
         try {
             const { title } = req.body
             const deleted = await this.todoService.deleteTask(title)

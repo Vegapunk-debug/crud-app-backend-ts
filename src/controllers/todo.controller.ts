@@ -7,3 +7,5 @@ const todoService = new ToDoService()
 
 router.post("/task", todoService.createTask)
 router.get("/task", todoService.getTask)
+router.put("/task", todoService.updateTask)
+router.delete("/task", todoService.deleteTask)

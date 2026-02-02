@@ -22,6 +22,21 @@ export class ToDoService {
         }
     }
 
+    async updateTask(prevTitle: string, newTitle: string, newStatus: boolean){
+        try {
+            const updatedTask = await ToDoModel.findOneAndUpdate(
+                { title: prevTitle},
+                { title: newTitle, status: newStatus },
+                { new: true }
+            );
+            if(!updatedTask) console.log("Task to update not found");
+            return updatedTask            
+        } catch (error) {
+            console.log("Failed to update task", error);
+            throw error
+        }
+    } 
+
     async deleteTask(title: string){
         try {
             const deletedTask = await ToDoModel.findOneAndDelete({ title: title });

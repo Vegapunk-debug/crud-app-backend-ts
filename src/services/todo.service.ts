@@ -21,6 +21,16 @@ export class ToDoService {
             throw error
         }
     }
+        
+    async getTaskById(id: string){
+        try {
+            const task = await ToDoModel.findById(id);
+            return task            
+        } catch (error) {
+            console.log("Failed to get task by id", error);
+            throw error
+        }
+    }
 
     async updateTask(prevTitle: string, newTitle: string, newStatus: boolean){
         try {

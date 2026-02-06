@@ -7,6 +7,7 @@ import { title } from "process";
 // const ToDoSchema = new Schema<Todo_interface>({title: String})
 
 const ToDoSchema = new Schema({
+    _id: String,
     title: String,    
     status: Boolean
 })

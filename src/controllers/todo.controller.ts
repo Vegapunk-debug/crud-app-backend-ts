@@ -24,6 +24,16 @@ export class TodoController{
         }
     }
 
+    async getTaskById(req: Request, res: Response){
+        try {
+            const { id } = req.body
+            const task = await this.todoService.getTaskById(id)
+            res.status(200).json(task)
+        } catch (error) {
+            res.status(500).json({ message: "Error getting task by id", error })
+        }
+    }
+
     async updateTask(req: Request, res: Response){
         try {
             const { prevTitle, newTitle, newStatus } = req.body

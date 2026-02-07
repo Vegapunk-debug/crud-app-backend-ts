@@ -34,13 +34,23 @@ export class TodoController{
         }
     }
 
-    async updateTask(req: Request, res: Response){
+    async updateTaskByTitle(req: Request, res: Response){
         try {
             const { prevTitle, newTitle, newStatus } = req.body
-            const updated = await this.todoService.updateTask(prevTitle, newTitle, newStatus)
+            const updated = await this.todoService.updateTaskByTitle(prevTitle, newTitle, newStatus)
             res.status(200).json(updated)
         } catch (error) {
-            res.status(500).json({ message: "Error updating tasks", error })
+            res.status(500).json({ message: "Error updating tasks by title", error })
+        }
+    }
+
+    async updateTaskById(req: Request, res: Response){
+        try {
+            const { id, newTitle, newStatus } = req.body
+            const updated = await this.todoService.updateTaskById(id, newTitle, newStatus)
+            res.status(200).json(updated)
+        } catch (error) {
+            res.status(500).json({ message: "Error updating tasks by id", error })
         }
     }
 
@@ -53,6 +63,8 @@ export class TodoController{
             res.status(500).json({ message: "Error deleting tasks", error })
         }
     }
+
+
 }
 
 

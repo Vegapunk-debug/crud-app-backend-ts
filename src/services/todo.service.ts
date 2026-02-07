@@ -32,7 +32,7 @@ export class ToDoService {
         }
     }
 
-    async updateTask(prevTitle: string, newTitle: string, newStatus: boolean){
+    async updateTaskByTitle(prevTitle: string, newTitle: string, newStatus: boolean){
         try {
             const updatedTask = await ToDoModel.findOneAndUpdate(
                 { title: prevTitle},
@@ -46,6 +46,24 @@ export class ToDoService {
             throw error
         }
     } 
+
+    async updateTaskById(id: string, newTitle: string, newStatus: boolean){
+        try {
+            const updatedTask = await ToDoModel.findByIdAndUpdate(
+                id,
+                { title: newTitle, status: newStatus },
+                { new: true }
+            )
+            if(!updatedTask) {
+                console.log("Task to update not found");
+                return
+            }
+            return updatedTask            
+        } catch (error) {
+            console.log("Failed to update task by id", error);
+            throw error
+        }
+    }
 
     async deleteTask(title: string){
         try {
